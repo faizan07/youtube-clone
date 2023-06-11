@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# Getting Started with youtube clone app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is developed using ReactJs, Redux toolkit, react-redux, react-router-dom, tailwindcss.
 
-## Available Scripts
+## Clone the repo
 
-In the project directory, you can run:
+## Setting up the API key
+
+In the root folder add an .env file.
+In the .env file add an environment variable - REACT_APP_GOOGLE_API_KEY
+Enter the Youtube API key in the value
+e.g.
+REACT_APP_GOOGLE_API_KEY=YOUTUBE_API_KEY
+
+## Running the application 
 
 ### `npm start`
 
