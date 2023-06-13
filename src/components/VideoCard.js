@@ -12,7 +12,7 @@ const VideoCard = ({item}) => {
         <ul>
             <li className='font-bold'>{title.slice(0, 35)}...</li>
             <li className='font-light font-sans'>{channelTitle}</li>
-            <li className='font-extralight font-sans'>{statistics.viewCount} views</li>
+            <li className='font-extralight font-sans'>{statistics?.viewCount} views</li>
         </ul>
     </div>
   )

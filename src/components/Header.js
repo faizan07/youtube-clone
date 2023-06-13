@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../utils/appSlice';
-import { YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/constants';
+import { YOUTUBE_SEARCH_QUERY, YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/constants';
 import { cacheSlice } from '../utils/searchSlice';
+import { addVideos } from '../utils/videoSlice';
 
 const Header = () => {
 
@@ -45,8 +46,18 @@ const Header = () => {
         }));
     }
 
-    const handleSuggestionClick = () => {
-        console.log("clicked")
+    const handleSuggestionClick = async (val) => {
+
+        setSearchtext(val);
+        setShowSuggestion(false);
+        //API call
+        const data = await fetch(YOUTUBE_SEARCH_QUERY + val);
+        const json = await data.json();
+        dispatch(addVideos(json.items));
+    }
+
+    const searchButtonClicked = () => {
+        console.log("btn btn")
     }
 
   return (
@@ -58,15 +69,15 @@ const Header = () => {
         <div className='col-span-10 px-10'>
             <div>
                 <input value={searchText} onFocus={()=>setShowSuggestion(true)}
-                onBlur={()=>setShowSuggestion(false)} 
+                
                 onChange={(e)=>setSearchtext(e.target.value)} 
                 className='border border-gray-200 w-96 rounded-l-full px-2' type='text' placeholder='Search'/>
-                <button onClick={()=>{console.log("button clicked")}} className='bg-gray-300 w-16 rounded-r-full'>🔍</button>
+                <button onClick={()=>searchButtonClicked()} className='bg-gray-300 w-16 rounded-r-full'>🔍</button>
             </div>
             {showSuggestion && searchSuggestion.length>0 && <div className='fixed bg-white py-2 px-2 w-[24rem] shadow-lg rounded-lg border border-gray-100'>
                 <ul>
-                    {searchSuggestion.map((item, index)=>{
-                        return <li onClick={()=>handleSuggestionClick()} className='hover:bg-gray-300' key={index}>{item}</li>
+                    {searchSuggestion.map((suggestionText)=>{
+                        return <li onClick={()=>handleSuggestionClick(suggestionText)} className='hover:bg-gray-300' key={suggestionText} >{suggestionText}</li>
                     })}
                 </ul>
             </div> }
