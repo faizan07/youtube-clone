@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {YOUTUBE_VIDEO_API} from '../utils/constants'
-import VideoCard from './VideoCard';
+import VideoCard, { VideoCardRedBorder } from './VideoCard';
 import { Link } from 'react-router-dom';
 
 
@@ -20,6 +20,7 @@ const VideoContainer = () => {
 
   return (
     <div className='flex flex-wrap'>
+      {videos[0] && <VideoCardRedBorder item={videos[0]} />}
       {videos.map((video) => {
         return <Link key={video.id} to={"/watch?v="+video.id}><VideoCard item={video} /></Link>
       })}
