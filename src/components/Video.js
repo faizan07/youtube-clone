@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { closeMenu } from '../utils/appSlice';
+import CommentsContainer from './CommentsContainer';
+import commentsData from '../utils/mockData_comments';
 
 const Video = () => {
 
@@ -22,6 +24,7 @@ const Video = () => {
         frameBorder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         allowFullScreen></iframe>
+        <CommentsContainer data={commentsData}/>
     </div>
   )
 }
