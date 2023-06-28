@@ -4,6 +4,7 @@ import { toggleMenu } from '../utils/appSlice';
 import { YOUTUBE_SEARCH_QUERY, YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/constants';
 import { cacheSlice } from '../utils/searchSlice';
 import { addVideos } from '../utils/videoSlice';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 

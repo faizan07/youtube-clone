@@ -27,6 +27,8 @@ const Sidebar = () => {
             <li className='font-bold'>Trending</li>
             <li>Shopping</li>
             <li>Live</li>
+            <li><Link to='/demo'>Demo</Link></li>
+            <li><Link to='/register'>Register</Link></li>
         </ul>
         </div>
     </div>
